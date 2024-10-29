@@ -21,7 +21,7 @@ os.environ["OPENAI_API_KEY"] = config.OPENAI_API_KEY
 os.environ["PINECONE_API_KEY"] = config.OPENAI_API_KEY
 os.environ["PINECONE_ENV"] = config.PINECONE_ENV
 
-def process_file(file_path):
+def process_pdf(file_path):
     # Carga y procesa el archivo PDF.
     loader = UnstructuredPDFLoader(file_path)
     docs = loader.load()
