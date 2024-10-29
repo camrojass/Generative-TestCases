@@ -1,75 +1,67 @@
-import bs4
-from langchain.chains import LLMChain
-from langchain.llms import OpenAI
-from langchain.prompts import PromptTemplate
-from langchain import hub
-from langchain.chat_models import ChatOpenAI
-from langchain.document_loaders import WebBaseLoader
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.schema import StrOutputParser
-from langchain.schema.runnable import RunnablePassthrough
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Chroma
-from langchain.document_loaders import TextLoader, UnstructuredPDFLoader
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
-from langchain.vectorstores import Pinecone
 import os
+import json
+from langchain.document_loaders import UnstructuredPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
+from langchain.chat_models import ChatOpenAI
+from langchain import hub
+from langchain.schema.runnable import RunnablePassthrough
 import config
 
+# Configuración de claves API.
 os.environ["OPENAI_API_KEY"] = config.OPENAI_API_KEY
-os.environ["PINECONE_API_KEY"] = config.OPENAI_API_KEY
+os.environ["PINECONE_API_KEY"] = config.PINECONE_API_KEY
 os.environ["PINECONE_ENV"] = config.PINECONE_ENV
 
-def process_pdf(file_path):
-    # Carga y procesa el archivo PDF.
+def generate_test_case(file_path):
+    # Cargar y procesar el archivo PDF.
     loader = UnstructuredPDFLoader(file_path)
     docs = loader.load()
 
-    # Divide el texto en fragmentos.
-    text_splitter = RecursiveCharacterTextSplitter(config.chunk_size, config.chunk_overlap)
+    # División en fragmentos.
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=10)
     splits = text_splitter.split_documents(docs)
 
-    # Crea el vector store y el retriever.
-    vectorstore = Chroma.from_documents(documents=splits, embendding=OpenAIEmbeddings())
+    # Creación del vector store.
+    vectorstore = Chroma.from_documents(documents=splits, embedding=OpenAIEmbeddings())
     retriever = vectorstore.as_retriever()
 
-    # Configura el modelo LLM y el prompt.
+    # Configuración de LLM y prompt.
     prompt = hub.pull("rlm/rag-prompt")
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
 
-    def format_docs(docs):
-        return "\n\n".join(doc.page_content for doc in docs)
+    # Creación de casos de prueba en JSON.
+    prompt_template = "Genera un caso de prueba en JSON para el endpoint {endpoint} con el método {method} y los parámetros {parameters}."
+    llm_input = {
+        "endpoint": "/api/v1/user",
+        "method": "POST",
+        "parameters": {"username": "test_user", "password": "1234"}
+    }
+    test_case_json = llm(prompt_template.format(**llm_input))
 
-    # Crea el chain de RAG.
-    rag_chain = (
-        {"context": retriever | format_docs, "question": RunnablePassthrough()}
-        | prompt
-        | llm
-        | StrOutputParser()
-    )
+    return test_case_json
 
-    # Invoca el chain para obtener la respuesta.
-    response = rag_chain.invole("Genera casos de prueba del caso de uso")
+def save_postman_json(test_cases, output_file_path):
+    # Estructura de colección Postman.
+    postman_collection = {
+        "info": {"name": "Test API Collection", "_postman_id": "12345", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+        "item": test_cases
+    }
+    with open(output_file_path, 'w') as file:
+        json.dump(postman_collection, file, indent=4)
 
-    return  response
+def execute_tests(output_file_path):
+    # Ejecuta las pruebas en Newman (Postman CLI).
+    os.system(f'newman run {output_file_path} --reporters cli,html --reporter-html-export results.html')
 
-def process_multiple_files(input_file_path, output_file_path):
-    # Lee las rutas de archivo desde el archivo de entrada.
-    with open(input_file_path, 'r') as file:
-        file_paths = file.readlines()
-
-    results = []
-
-    for file_path in file_paths:
-        file_path = file_path.strip()  # Elimina espacios en blanco y saltos de línea
-        result = process_pdf(file_path)
-        results.append(result)
-
-    # Escribe los resultados en el archivo de salida.
-    with open(output_file_path, 'w') as output_file:
-        output_file.write('\n\n'.join(results))
-
-# Definición de rutas de archivos de entrada y salida.
+# Ejecución del proceso.
 input_file_path = "C:\\Repos\\Proyect\\input\\doc.txt"
-output_file_path = "C:\\Repos\\Proyect\\output\\resultado.txt"
+output_file_path = "C:\\Repos\\Proyect\\output\\postman_collection.json"
+
+# Generación y guardado del archivo de colección de Postman.
+test_cases = [generate_test_case(input_file_path)]
+save_postman_json(test_cases, output_file_path)
+
+# Ejecución de las pruebas con Newman.
+execute_tests(output_file_path)
