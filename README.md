@@ -1,4 +1,5 @@
 # Gen_TestCase
+La documentación generada con apoyo de ChatGPT
 
 ### Documentación del Código
 
@@ -284,3 +285,4 @@ Con esta documentación, el flujo y propósito del código quedan claramente exp
 * OpenAI. Url: https://python.langchain.com/docs/integrations/llms/openai
 * Retrieval-augmented generation (RAG). Url: https://python.langchain.com/docs/use_cases/question_answering/
 * Pinecone. Url: https://python.langchain.com/docs/integrations/vectorstores/pinecone
+* ChatGPT. Url: https://chat.openai.com/
