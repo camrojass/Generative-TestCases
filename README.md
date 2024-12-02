@@ -1,4 +1,5 @@
 # Gen_TestCase
+
 ### Documentación del Código
 
 Este código es una solución automatizada para procesar documentos PDF, extraer endpoints de API, generar casos de prueba con OpenAI, almacenar embeddings en Pinecone, y guardar los resultados en formatos JSON (Postman) y Excel. A continuación se detalla cada sección:
@@ -275,3 +276,11 @@ El código requiere un archivo PDF que contenga información estructurada o semi
   - Configuraciones como `chunk_size`, `temperature` y `max_tokens` son fácilmente ajustables para adaptarse a diferentes necesidades.
 
 Con esta documentación, el flujo y propósito del código quedan claramente explicados para usuarios y desarrolladores.
+
+# Autor
+* **Camilo Alejandro Rojas** - *Trabajo y documentación* - [camrojass](https://github.com/camrojass)
+
+# Referencias
+* OpenAI. Url: https://python.langchain.com/docs/integrations/llms/openai
+* Retrieval-augmented generation (RAG). Url: https://python.langchain.com/docs/use_cases/question_answering/
+* Pinecone. Url: https://python.langchain.com/docs/integrations/vectorstores/pinecone
