@@ -1,15 +1,24 @@
 # Gen_TestCase
 La documentación generada con apoyo de ChatGPT
 
-### Documentación del Código
+## Documentación del Código
 
-Este código es una solución automatizada para procesar documentos PDF, extraer endpoints de API, generar casos de prueba con OpenAI, almacenar embeddings en Pinecone, y guardar los resultados en formatos JSON (Postman) y Excel. A continuación se detalla cada sección:
+Este código es una solución automatizada para procesar documentos PDF, que contienen especificaciones de APIs, y permite la generación casos de prueba con OpenAI, almacenar embeddings en Pinecone, y guardar los resultados en formatos JSON (Postman) y Excel. 
+A continuación se detalla cada sección:
 
 ---
 
 ### **1. Configuración**
 
 #### **Claves API**
+
+* OpenAI:
+    * Se utiliza para generar casos de prueba dinámicamente basados en los datos extraídos.
+    * La clave API se configura a través de variables de entorno o el archivo config.
+* Pinecone:
+    * Se utiliza para almacenar embeddings de texto.
+    * La configuración del índice incluye el nombre (INDEX_NAME), dimensiones (DIMENSION), y métrica de similitud (METRIC).
+
 ```python
 os.environ["OPENAI_API_KEY"] = config.OPENAI_API_KEY
 pc = Pinecone(api_key=config.PINECONE_API_KEY)
@@ -24,6 +33,9 @@ DIMENSION = config.dimension  # Dimensiones del modelo text-embedding-ada-002
 METRIC = config.metric  # Métrica para calcular similitud
 ```
 - Se configura el índice de Pinecone donde se almacenarán los embeddings generados. Si el índice no existe, se crea.
+
+### OCR y Procesamiento de PDF
+Se utiliza PyPDF2 para leer PDFs y pytesseract para realizar OCR en archivos no legibles.
 
 ---
 
