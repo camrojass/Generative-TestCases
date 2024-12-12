@@ -5,7 +5,6 @@ import pytesseract
 
 # Validación del PDF
 def is_valid_pdf(file_path):
-
     """
     Antes de procesar el archivo, se asegura de que el archivo existe en la ruta proporcionada y tiene una extensión .pdf.
     :param file_path:
@@ -20,7 +19,6 @@ def is_valid_pdf(file_path):
     return True
 
 def is_pdf_readable(file_path):
-
     """
     para validar la estructura básica del PDF y verificar que se pueda leer.
     :param file_path:
@@ -37,7 +35,6 @@ def is_pdf_readable(file_path):
         return False
 
 def has_text_content(file_path):
-
     """
     verificar si el contenido de texto está presente utilizando PyPDF2 o un método similar.
     :param file_path:
@@ -55,13 +52,11 @@ def has_text_content(file_path):
         return False
 
 def extract_text_with_ocr(file_path):
-
     """
     Si el PDF no contiene texto legible, se usa herramientas de OCR (Reconocimiento Óptico de Caracteres) para extraer texto de las imágenes.
     :param file_path: input_file_path
     :return: text/none
     """
-
     try:
         images = convert_from_path(file_path)
         text = ""
@@ -76,7 +71,6 @@ def extract_text_with_ocr(file_path):
         return None
 
 def validate_pdf(file_path):
-
     """
     Valida PDF antes de procesarlo
     :param file_path: input_file_path
