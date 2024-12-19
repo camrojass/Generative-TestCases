@@ -84,7 +84,7 @@ def extract_method_from_text(line):
     """
     Extrae el método HTTP de una línea de texto.
     """
-    match = re.search(r"\b(GET|POST|PUT|DELETE)\b", line, re.IGNORECASE)
+    match = re.search(r"\b(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS|TRACE|CONNECT)\b", line, re.IGNORECASE)
     if match:
         return match.group(1).upper()  # Devolver el método en mayúsculas
     return "GET"  # Valor predeterminado
