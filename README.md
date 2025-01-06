@@ -1,4 +1,4 @@
-# Gen_TestCase
+# Generative TestCase
 La documentación generada con apoyo de ChatGPT
 
 ## Documentación del Código
