@@ -1,281 +1,328 @@
 {
-    "info": {
-        "name": "Test API Collection for OpenAPI",
-        "_postman_id": "da3f3144-54af-488e-a93c-b74e93784903",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-    },
-    "item": [
-        {
-            "name": "Prueba para url: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "url:",
-                    "host": [
-                        "url:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/pet: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/pet:",
-                    "host": [
-                        "/api/pet:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/pet: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/pet:",
-                    "host": [
-                        "/api/pet:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/pet/findByStatus: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/pet/findByStatus:",
-                    "host": [
-                        "/api/pet/findByStatus:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/pet/findByTags: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/pet/findByTags:",
-                    "host": [
-                        "/api/pet/findByTags:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/pet/{petId}: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/pet/{petId}:",
-                    "host": [
-                        "/api/pet/{petId}:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/pet/{petId}/uploadImage: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/pet/{petId}/uploadImage:",
-                    "host": [
-                        "/api/pet/{petId}/uploadImage:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/store/inventory: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/store/inventory:",
-                    "host": [
-                        "/api/store/inventory:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/store/order: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/store/order:",
-                    "host": [
-                        "/api/store/order:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/store/order/{orderId}: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/store/order/{orderId}:",
-                    "host": [
-                        "/api/store/order/{orderId}:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/user: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/user:",
-                    "host": [
-                        "/api/user:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/user/createWithList: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/user/createWithList:",
-                    "host": [
-                        "/api/user/createWithList:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/user/login: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/user/login:",
-                    "host": [
-                        "/api/user/login:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/user/logout: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/user/logout:",
-                    "host": [
-                        "/api/user/logout:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/user/logout: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/user/logout:",
-                    "host": [
-                        "/api/user/logout:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        },
-        {
-            "name": "Prueba para /api/user/{username}: con metodo GET",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "/api/user/{username}:",
-                    "host": [
-                        "/api/user/{username}:"
-                    ]
-                },
-                "body": {
-                    "mode": "raw",
-                    "raw": "[]"
-                },
-                "description": "Validar los códigos HTTP: HTTP 200"
-            }
-        }
-    ]
+	"info": {
+		"_postman_id": "36e1791f-959d-41a7-9a66-6f934f3e10db",
+		"name": "MyColection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34678139"
+	},
+	"item": [
+		{
+			"name": "validar respuesta servicio de Autenticacion HTTP 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validación estado HTTP 200 OK\", function () {\r",
+							"    // Verificar que retorne respuesta con body\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "ASSIGNEDAPIKEY",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "CLIENTID",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "PASSWORD",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://autenticar.muestrademo.ejemplo.co/apiejemplo/v1/autenticacion",
+					"protocol": "https",
+					"host": [
+						"autenticar",
+						"muestrademo",
+						"ejemplo",
+						"co"
+					],
+					"path": [
+						"apiejemplo",
+						"v1",
+						"autenticacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validar respuesta servicio de Autenticacion HTTP 415",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validación estado HTTP 415 Unsupported Media Type\", function () {\r",
+							"    // Verificar que retorne respuesta con body y el respectivo código de error\r",
+							"    pm.response.to.have.status(415);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "ASSIGNEDAPIKEY",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://autenticar.muestrademo.ejemplo.co/apiejemplo/v1/autenticacion",
+					"protocol": "https",
+					"host": [
+						"autenticar",
+						"muestrademo",
+						"ejemplo",
+						"co"
+					],
+					"path": [
+						"apiejemplo",
+						"v1",
+						"autenticacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validar respuesta servicio de Autenticacion HTTP 401",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validación estado HTTP 401 Unauthorized\", function () {\r",
+							"    // Verificar que retorne respuesta con body y el respectivo código de error\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "ASSIGNEDAPIKEY",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "CLIENTID",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "PASSWORD",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://autenticar.muestrademo.ejemplo.co/apiejemplo/v1/autenticacion",
+					"protocol": "https",
+					"host": [
+						"autenticar",
+						"muestrademo",
+						"ejemplo",
+						"co"
+					],
+					"path": [
+						"apiejemplo",
+						"v1",
+						"autenticacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validar respuesta servicio de Autenticacion HTTP 403",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validación estado HTTP 403 Forbidden\", function () {\r",
+							"    // Verificar que retorne respuesta con body y el respectivo código de error\r",
+							"    pm.response.to.have.status(403);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "ASSIGNEDAPIKEY",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "CLIENTID",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "PASSWORD",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "autenticar.muestrademo.ejemplo.co/apiejemplo/v1/autenticacion",
+					"host": [
+						"autenticar",
+						"muestrademo",
+						"ejemplo",
+						"co"
+					],
+					"path": [
+						"apiejemplo",
+						"v1",
+						"autenticacion"
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }
