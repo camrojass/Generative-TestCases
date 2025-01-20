@@ -1,0 +1,144 @@
+openapi: 3.0.0
+info:
+  title: Especificación de interfaz para servicio web de notificación.
+  description: |
+    Esta interfaz proporciona el ejemplo del consumo de servicio de autenticación.
+    
+        Control de cambios:
+        - 1.0.0: Versión Inicial
+  version: 1.0.0
+servers:
+  - url: https://autenticar.muestrademo.ejemplo.co/apiejemplo
+paths:
+  /v1/autenticacion:
+    post:
+      tags:
+        - Autenticación
+      summary: "Servicio de autenticación para obtención de token"
+      description: |
+        Servicio para realizar la autenticación y obtener token de acceso. El servicio requiere como parámetros grand_type (por defecto, el valor es client_credentials), cliend_id y client_secret. Como respuesta se retorna el access_token, y el tiempo de vigencia del token (expires_in). 
+          
+          NOTA: Para el consumo del servicio el contentType es  "application/x-www-form-urlencoded".
+      operationId: "autenticacion"
+      parameters:
+        - name: apikey
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+      responses:
+        '200':
+          description: "Operación exitosa, posibles statusTransaction/ErrorDescription: 000 => ACK, 301 => Datos inexistentes"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAuth'
+        '400':
+          description: "Formato inválido debido a petición incorrecta. Posibles error/error_description: invalid_request/Missing form parameter: grand_type, invalid_request/Missing form parameter: client_id."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataAuth'
+        '401':
+          description: "Operación no permitida. Posibles error/error_description: invalid_request, unauthorized_client/Client secret not provided in request."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDataAuth'
+        '403':
+          description: "Permiso denegado. No se ha podido realizar la conexión con el servidor."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageError'
+        '415':
+          description: "Content Type no soportado (Unsupported Media Type)."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageError'
+components:
+  schemas:
+    AuthRequest:
+      type: object
+      required:
+          - grant_type
+          - client_id
+          - client_secret
+      properties:
+        grant_type:
+          type: string
+          description: "Tipo de credenciales de cliente para obtener el token."
+          enum:
+            - client_credentials
+        client_id:
+            type: string
+            description: "Usuario. Valor único asignado a cada consumidor en la configuración"
+            example: "CLIENTID"
+        client_secret:
+            type: string
+            description: "Contraseña. Valor único asignado a cada consumidor en la configuración"
+            example: "PASSWORD"
+    ResponseDataAuth:
+      type: object
+      required:
+          - error
+          - error_description
+      properties:
+          error:
+            type: string
+            example: "String"
+            description: Código de error al momento intentar consultar el servicio de autenticación.
+          error_description:
+            type: string
+            example: "String"
+            description: Descripción de error al momento intentar consultar el servicio de autenticación.
+    ResponseAuth:
+      type: object
+      required:
+          - access_token
+          - expires_in
+          - refresh_expires_in
+          - token_type
+          - not-before-policy
+          - scope
+      description: ""
+      properties:
+          access_token:
+            type: string
+            example: "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ5STU5dldZTD"
+            description: "Token de acceso"
+          expires_in:
+            type: number
+            description: "Duración en segundos del token."
+            example: 3600
+          refresh_expires_in:
+            type: number
+          token_type:
+            type: string
+            enum:
+              - Bearer
+          not-before-policy:
+            type: number
+          scope:
+            type: string
+            description: "Permisos asociados al cliente para cada servicio expuesto"
+    MessageError:
+      type: object
+      required:
+        - message
+      properties:
+          message:
+            example: "String"
+            description: "Mensaje de error cuando se hace la consulta con token o apikey inválido o a un endpoint incorrecto. Posibles message vs Estados HTTP: HTTP 401 => Unauthorized, HTTP 403 => Forbidden, HTTP 415 => Unsupported Media Type"
+            type: string
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: apikey
+      in: header
